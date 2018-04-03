@@ -1,0 +1,10 @@
+---
+- name: install CentOS 7 EPEL repository
+  yum:
+    name: epel-release
+    state: latest
+  
+- name: install Nginx
+  yum:
+    name: nginx
+    state: latest
