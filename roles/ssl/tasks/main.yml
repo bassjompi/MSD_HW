@@ -8,8 +8,11 @@
 
   with_items:
     - openssl 
-    - pyOpenSSL
- 
+    - python-pip
+
+- name: install pip package
+  pip:
+    name: pyOpenSSL
  
 - name: Create directory
  
