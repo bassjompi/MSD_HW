@@ -9,6 +9,7 @@
     name: nginx
     state: latest
 
+
 - name: start Nginx
   service: 
     name=nginx 

@@ -31,23 +31,23 @@
 
   openssl_privatekey:
 
-    path: /etc/ssl/private/ansible.com.pem
+    path: /etc/ssl/private/msd.pem
 
 - name: Generate an OpenSSL Certificate Signing Request
  
   openssl_csr:
+    path: /etc/ssl/csr/msd.csr
+
+    privatekey_path: /etc/ssl/private/msd.pem
  
-    path: /etc/ssl/csr/www.ansible.com.csr
+    country_name: CZ
  
-    privatekey_path: /etc/ssl/private/ansible.com.pem
+    organization_name: MSD
  
-    country_name: IN
- 
-    organization_name: Ansible
- 
-    email_address: author@shakthimaan.com
- 
-    common_name: www.ansible.com
+    email_address: juan@gmail.com
+
+    common_name: www.msd.com
+
  
 - name: Generate a self signed certificate
  
@@ -55,8 +55,32 @@
  
     path: /etc/ssl/certs/nginx-selfsigned.crt
  
-    privatekey_path: /etc/ssl/private/ansible.com.pem
+    privatekey_path: /etc/ssl/private/msd.pem
  
-    csr_path: /etc/ssl/csr/www.ansible.com.csr
+    csr_path: /etc/ssl/csr/msd.csr
  
     provider: selfsigned
+
+
+- name: Setup nginx with SSL
+
+  copy:
+ 
+    src: ssl.conf
+ 
+    dest: /etc/nginx/conf.d/ssl.conf
+ 
+    owner: root
+ 
+    group: root
+ 
+    mode: 0644
+ 
+ 
+- name: Restart nginx
+ 
+  service:
+ 
+    name: nginx
+ 
+    state: restarted
