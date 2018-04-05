@@ -1,2 +1,29 @@
 ---
-# tasks file for supervisord
+
+- name: upgrade pip
+  pip:
+    name: pip
+    extra_args: --upgrade
+
+- name: install supervisord
+  pip:
+    name: supervisor
+
+
+- name: Setup supervisord
+
+  copy:
+ 
+    src: supervisord.conf
+ 
+    dest: /etc/
+ 
+    owner: root
+ 
+    group: root
+ 
+    mode: 0644
+
+
+- name: start supervisord
+  command:  /usr/bin/supervisord
