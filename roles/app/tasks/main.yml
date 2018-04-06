@@ -10,6 +10,32 @@
     - gcc
     
 
-- name: install virtualenv
+- name: install pip packages
   pip:
-    name: virtualenv
+    name: "{{ item }}"
+  
+  with_items:
+    - psutil
+    - flask
+    - uwsgi
+
+
+- name: Copy the python app
+
+  copy:
+ 
+    src: app
+ 
+    dest: /etc/nginx/
+ 
+    owner: root
+ 
+    group: root
+ 
+    mode: 0644
+
+
+- name: set selinux to permissive
+  command:  setenforce Permissive
+
+

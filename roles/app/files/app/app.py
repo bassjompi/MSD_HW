@@ -1,10 +1,13 @@
-from flask import render_template
-from app import app
+#!/bin/python
+
+from flask import Flask, render_template
 import socket
 import psutil
 import datetime
 
-@app.route('/index')
+application = Flask(__name__)
+
+@application.route('/')
 def cpu():
     usage=str("THE CPU USAGE IS {} %".format(psutil.cpu_percent())+"\n")
     now = datetime.datetime.now()
@@ -13,3 +16,14 @@ def cpu():
 
     return render_template('index.html', title='MSD', time=tiempo, usage=usage, address=ip)
 
+
+def main():
+    application.run(host='0.0.0.0',
+            port=5000,
+            threaded=True,
+            debug=True
+            )
+
+
+if __name__ == '__main__':
+    main()
