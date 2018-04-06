@@ -21,21 +21,34 @@
 
 
 - name: Copy the python app
-
   copy:
- 
     src: app
- 
     dest: /etc/nginx/
- 
     owner: root
- 
     group: root
- 
     mode: 0644
 
 
-- name: set selinux to permissive
-  command:  setenforce Permissive
+- name: Copy the nginx config file
+  copy:
+    src: nginx.conf
+    dest: /etc/nginx/
+    owner: root
+    group: root
+    mode: 0644
 
 
+- name: set Selinux to permissive
+  command: setenforce Permissive
+
+
+#- name: start uWSGI to serve the flask app
+#  command: uwsgi --socket 0.0.0.0:8000   -w wsgi --socket-timeout=65
+#  args:
+#    chdir: /etc/nginx/app  
+
+
+- name: start Nginx
+  service: 
+    name=nginx 
+    state=restarted

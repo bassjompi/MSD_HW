@@ -59,28 +59,4 @@
  
     csr_path: /etc/ssl/csr/msd.csr
  
-    provider: selfsigned
-
-
-- name: Setup nginx with SSL
-
-  copy:
- 
-    src: ssl.conf
- 
-    dest: /etc/nginx/conf.d/ssl.conf
- 
-    owner: root
- 
-    group: root
- 
-    mode: 0644
- 
- 
-- name: Restart nginx
- 
-  service:
- 
-    name: nginx
- 
-    state: restarted
+    provider: selfsigned 
