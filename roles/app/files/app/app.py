@@ -1,5 +1,3 @@
-#/bin/python
-
 from flask import Flask, render_template
 import psutil
 import datetime
@@ -16,12 +14,23 @@ def systeminfo():
     ni.ifaddresses('eth1')
     ip = ni.ifaddresses('eth1')[ni.AF_INET][0]['addr']
 
-    return render_template('index.html', title='MSD', time=tiempo, usage=usage, address=ip)
+    numbers = list(ip)
+    odd = []
+    even = []
+    for i in numbers:
+        if i != '.':
+            cifra = int(i)
+            if cifra % 2 == 0:
+                even.append(i)
+            else:
+                odd.append(i)
+
+    return render_template('index.html', title='MSD_JUAN_PABLO', time=tiempo, usage=usage, address=ip, even=even, odd=odd)
 
 
 def main():
-    application.run(host='0.0.0.0',
-            port=5000,
+    app.run(host='0.0.0.0',
+            port=80,
             threaded=True,
             debug=True
             )
