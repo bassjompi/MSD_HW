@@ -1,18 +1,20 @@
-#!/bin/python
+#/bin/python
 
 from flask import Flask, render_template
-import socket
 import psutil
 import datetime
+import netifaces as ni
+
 
 application = Flask(__name__)
 
 @application.route('/')
-def cpu():
+def systeminfo():
     usage=str("THE CPU USAGE IS {} %".format(psutil.cpu_percent())+"\n")
     now = datetime.datetime.now()
     tiempo = str(now.strftime("%Y-%m-%d %H:%M:%S"))
-    ip=(socket.gethostbyname(socket.gethostname()))
+    ni.ifaddresses('eth1')
+    ip = ni.ifaddresses('eth1')[ni.AF_INET][0]['addr']
 
     return render_template('index.html', title='MSD', time=tiempo, usage=usage, address=ip)
 

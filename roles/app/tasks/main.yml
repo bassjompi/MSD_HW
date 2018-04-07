@@ -18,6 +18,7 @@
     - psutil
     - flask
     - uwsgi
+    - netifaces
 
 
 - name: Copy the python app
