@@ -41,17 +41,8 @@
 
 - name: set Selinux to permissive
   command: setenforce Permissive
+ 
 
-
-#- name: start uWSGI to serve the flask app
-#  shell: cd /etc/nginx/app; uwsgi --socket 0.0.0.0:8000   -w wsgi --socket-timeout=6 &
-
-
-#- name: check that ports are not in use
-#  command: /usr/sbin/fuser -k -n tcp 443
-
-
-#- name: start Nginx
-#  service: 
-#   name=nginx 
-#    state=restarted
+- name: change hostname
+  hostname:
+    name: MSD_JUAN
