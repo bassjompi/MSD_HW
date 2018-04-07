@@ -8,7 +8,6 @@
   with_items:
     - python-devel 
     - gcc
-    - psmisc
     
 
 - name: install pip packages
