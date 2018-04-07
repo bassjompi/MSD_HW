@@ -8,6 +8,7 @@
   with_items:
     - python-devel 
     - gcc
+    - psmisc
     
 
 - name: install pip packages
@@ -43,12 +44,14 @@
 
 
 #- name: start uWSGI to serve the flask app
-#  command: uwsgi --socket 0.0.0.0:8000   -w wsgi --socket-timeout=65
-#  args:
-#    chdir: /etc/nginx/app  
+#  shell: cd /etc/nginx/app; uwsgi --socket 0.0.0.0:8000   -w wsgi --socket-timeout=6 &
 
 
-- name: start Nginx
-  service: 
-    name=nginx 
-    state=restarted
+#- name: check that ports are not in use
+#  command: /usr/sbin/fuser -k -n tcp 443
+
+
+#- name: start Nginx
+#  service: 
+#   name=nginx 
+#    state=restarted
