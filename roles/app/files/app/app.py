@@ -8,7 +8,7 @@ application = Flask(__name__)
 
 @application.route('/')
 def systeminfo():
-    usage=str("THE CPU USAGE IS {} %".format(psutil.cpu_percent())+"\n")
+    usage=str("THE CPU USAGE IS {}%".format(psutil.cpu_percent())+"\n")
     now = datetime.datetime.now()
     tiempo = str(now.strftime("%Y-%m-%d %H:%M:%S"))
     ni.ifaddresses('eth1')
