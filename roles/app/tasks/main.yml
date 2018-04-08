@@ -41,8 +41,3 @@
 
 - name: set Selinux to permissive
   command: setenforce Permissive
- 
-
-- name: change hostname
-  hostname:
-    name: MSD_JUAN
