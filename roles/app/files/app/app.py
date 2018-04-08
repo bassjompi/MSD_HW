@@ -1,18 +1,16 @@
 from flask import Flask, render_template
 import psutil
-import datetime
-import netifaces as ni
+import time
+import socket
 
 
 application = Flask(__name__)
 
 @application.route('/')
 def systeminfo():
-    usage=str("THE CPU USAGE IS {}%".format(psutil.cpu_percent())+"\n")
-    now = datetime.datetime.now()
-    tiempo = str(now.strftime("%Y-%m-%d %H:%M:%S"))
-    ni.ifaddresses('eth1')
-    ip = ni.ifaddresses('eth1')[ni.AF_INET][0]['addr']
+    usage=str("CPU USAGE  {}%".format(psutil.cpu_percent())+"\n")
+    tiempo= time.strftime('%H:%M:%S %Z on %b %d, %Y')
+    ip=(socket.gethostbyname(socket.gethostname()))
 
     numbers = list(ip)
     odd = []
