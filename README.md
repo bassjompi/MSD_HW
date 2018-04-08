@@ -1,8 +1,9 @@
 ## Requirements
 
-Youâ€™ll need the following software installed in your machine:
-1. Vagrant
-2. Ansible
+You’ll need the following software installed in your machine:
+
+1. Ansible
+2. Vagrant
 ---
 
 ## Use instructions
