@@ -1,3 +1,14 @@
+## Description
+
+This Repo will deploy a centOS 7 VM using vagrant and will provision it with Ansible with the following items:
+
+1. Install Nginx server
+2. Deploy of a python (flask) app that will show the system info
+3. The app will be communicating with Nginx using uWSGI
+4. Nginx is used as a reverse proxy in front of the application and provides SSL communication based on self-signed certificate
+5. Install Supervisord  and implementation of the Nging and uWSGI services using it
+---
+
 ## Requirements
 
 You will need the following software installed in your machine:
@@ -13,3 +24,4 @@ You will need the following software installed in your machine:
 3. Once the VM is created and provisioned you should be able to access the site https://192.168.33.13
 4. Suervisord interface should be now accesible at http://192.168.33.13:9001
 ---
+
