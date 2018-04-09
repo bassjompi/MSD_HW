@@ -1,0 +1,6 @@
+---
+
+- name: add line to hosts
+  lineinfile:
+    path: /etc/hosts
+    line: '192.168.33.13 MSD_JUAN'
