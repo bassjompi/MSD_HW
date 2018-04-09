@@ -29,6 +29,7 @@ You will need the following software installed in your machine:
           									ansible-playbook -i "localhost," -c local playbook_local.yml
 											
 6. Now try to ssh the server using the hostname
+
           									ssh vagrant@MSD_JUAN -i  PATH_TO_REPO/.vagrant/machines/default/virtualbox/private_key
 ---
 
