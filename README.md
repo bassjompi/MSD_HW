@@ -27,7 +27,8 @@ You will need the following software installed in your machine:
 5. Execute the playbook_local.yml  to add an entry in your local /etc/hosts with the new server  (MSD_JUAN)
 
           									ansible-playbook -i "localhost," -c local playbook_local.yml
+											
 6. Now try to ssh the server using the hostname
-											ssh vagrant@MSD_JUAN -i  PATH_TO_REPO/.vagrant/machines/default/virtualbox/private_key
+          									ssh vagrant@MSD_JUAN -i  PATH_TO_REPO/.vagrant/machines/default/virtualbox/private_key
 ---
 
