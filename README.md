@@ -16,6 +16,7 @@ You will need the following software installed in your machine:
 
 1. Ansible
 2. Vagrant
+3. VirtualBox or similar
 ---
 
 # Use instructions
