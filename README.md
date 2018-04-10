@@ -1,4 +1,4 @@
-## Description
+# Description
 
 This Repo will deploy a centOS 7 VM using vagrant and will provision it with Ansible with the following items:
 
@@ -10,7 +10,7 @@ This Repo will deploy a centOS 7 VM using vagrant and will provision it with Ans
 6. Add an entry in your local /etc/hosts with the new server  (MSD_JUAN)
 ---
 
-## Requirements
+# Requirements
 
 You will need the following software installed in your machine:
 
@@ -18,7 +18,7 @@ You will need the following software installed in your machine:
 2. Vagrant
 ---
 
-## Use instructions
+# Use instructions
 
 1. Clone the repository to your local host
 2. Issue the command "vagrant up", that should start the VM creation and the ansible provisioning
@@ -33,6 +33,8 @@ You will need the following software installed in your machine:
           									ssh vagrant@MSD_JUAN -i  PATH_TO_REPO/.vagrant/machines/default/virtualbox/private_key
 ---
 
-## Roles description
+# Roles description
 
-# Nginx
+## Nginx
+
+This role will simply install the EPEL repository for Centos7 and the it will install Nginx. EPEL is needed in order to download nginx via yum
