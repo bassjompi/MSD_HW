@@ -33,3 +33,6 @@ You will need the following software installed in your machine:
           									ssh vagrant@MSD_JUAN -i  PATH_TO_REPO/.vagrant/machines/default/virtualbox/private_key
 ---
 
+## Roles description
+
+# Nginx
