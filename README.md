@@ -1,4 +1,4 @@
-## Description
+# Description
 
 This Repo will deploy a centOS 7 VM using vagrant and will provision it with Ansible with the following items:
 
@@ -10,7 +10,7 @@ This Repo will deploy a centOS 7 VM using vagrant and will provision it with Ans
 6. Add an entry in your local /etc/hosts with the new server  (MSD_JUAN)
 ---
 
-## Requirements
+# Requirements
 
 You will need the following software installed in your machine:
 
@@ -18,7 +18,7 @@ You will need the following software installed in your machine:
 2. Vagrant
 ---
 
-## Use instructions
+# Use instructions
 
 1. Clone the repository to your local host
 2. Issue the command "vagrant up", that should start the VM creation and the ansible provisioning
@@ -33,3 +33,30 @@ You will need the following software installed in your machine:
           									ssh vagrant@MSD_JUAN -i  PATH_TO_REPO/.vagrant/machines/default/virtualbox/private_key
 ---
 
+# Roles description
+
+
+## Nginx
+
+This role will simply install the EPEL repository for Centos7 and then it will install Nginx. EPEL is needed in order to download nginx via yum
+
+
+## SSL
+
+This role has the final purpose of generating a self signed certificate in the host. For this the automation will:
+
+1. Install the required packages: openssl, pip (needed to install python packages) and PyOpenssl
+2. Create the directories were we will generate the certificate and key
+3. Generate a private key  in /etc/ssl/private/msd.pem
+4. Generate a certificate signing request using that key, and filling the data needed (email, country ...etc)
+5. Finally it will generate a self signed certificate using the key and the signing request. We can now use our certificate sitting in the folder /etc/ssl/certs/nginx-selfsigned.crt
+
+
+## app
+
+This role will deploy a python app (falsk) that will communicate with the nginx server using uWSGI so it can be used as a reverse proxy using SSL with the certificate we generated in the previous role.
+Steps are:
+
+1. Install all the required python dependencies and pip packages (including uWSGI and Flask framework) so our app can run
+2. We will copy our python app into the host in the /etc/nginx/app folder.  The app is sitting in the /FILES folder of the role
+3. Copy he nginx.conf file (configuration file for nginx) to redirect the app being served over uWSGI to the SSL port 443. The file is sitting in the /FILES folder of the role 
