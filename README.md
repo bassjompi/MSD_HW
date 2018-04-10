@@ -54,3 +54,9 @@ This role has the final purpose of generating a self signed certificate in the h
 
 ## app
 
+This role will deploy a python app (falsk) that will communicate with the nginx server using uWSGI so it can be used as a reverse proxy using SSL with the certificate we generated in the previous role.
+Steps are:
+
+1. Install all the required python dependencies and pip packages (including uWSGI and Flask framework) so our app can run
+2. We will copy our python app into the host in the /etc/nginx/app folder.  The app is sitting in the /FILES folder of the role
+3. Copy he nginx.conf file (configuration file for nginx) to redirect the app being served over uWSGI to the SSL port 443. The file is sitting in the /FILES folder of the role 
