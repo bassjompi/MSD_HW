@@ -61,7 +61,7 @@ Steps are:
 2. We will copy our python app into the host in the /etc/nginx/app folder.  The app is sitting in the /FILES folder of the role
 3. Copy he nginx.conf file (configuration file for nginx) to redirect the app being served over uWSGI to the SSL port 443. The file is sitting in the /FILES folder of the role 
 
-                                              Problem found: The reverse proxy seemed to be not working and i was receiving the "failed (98: Address already in use)" in the ssl port 443
-                                              The root cause was the Security-Enhaced linux interfering the communication. For this we will have to set Selinux to "Permissive" state
+                                Problem found: The reverse proxy seemed to be not working and i was receiving the "failed (98: Address already in use)" in the ssl port 443
+                                The root cause was the Security-Enhaced linux interfering the communication. For this we will have to set Selinux to "Permissive" state
                              
-4.    
+4. Set the Selinux to "Permissive" state to solve the above mentioned problem    
