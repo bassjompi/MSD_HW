@@ -26,8 +26,8 @@ You will need the following software installed in your machine:
 
                                             vagrant up
                                             
-3. Once the VM is created and provisioned you should be able to access the site https://192.168.33.13
-4. Suervisord interface should be now accesible at http://192.168.33.13:9001
+3. Once the VM is created and provisioned you should be able to access the site and see the system info at    https://192.168.33.13
+4. Suervisord interface should be now accesible at      http://192.168.33.13:9001
 5. Execute the playbook_local.yml  to add an entry in your local /etc/hosts with the new server  (MSD_JUAN)
 
           									ansible-playbook -i "localhost," -c local playbook_local.yml
