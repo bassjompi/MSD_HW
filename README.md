@@ -21,8 +21,11 @@ You will need the following software installed in your machine:
 
 # Use instructions
 
-1. Clone the repository to your local host
-2. Issue the command "vagrant up", that should start the VM creation and the ansible provisioning
+1. Clone the repository to your local host and change directory to the main /MSD_HW folder
+2. Start the VM creation and the ansible provisioning with the command
+
+                                            vagrant up
+                                            
 3. Once the VM is created and provisioned you should be able to access the site https://192.168.33.13
 4. Suervisord interface should be now accesible at http://192.168.33.13:9001
 5. Execute the playbook_local.yml  to add an entry in your local /etc/hosts with the new server  (MSD_JUAN)
