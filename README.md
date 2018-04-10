@@ -52,7 +52,7 @@ This role has the final purpose of generating a self signed certificate in the h
 5. Finally it will generate a self signed certificate using the key and the signing request. We can now use our certificate sitting in the folder /etc/ssl/certs/nginx-selfsigned.crt
 
 
-## app
+## App
 
 This role will deploy a python app (falsk) that will communicate with the nginx server using uWSGI so it can be used as a reverse proxy using SSL with the certificate we generated in the previous role.
 Steps are:
@@ -64,4 +64,18 @@ Steps are:
                                 Problem found: The reverse proxy seemed to be not working and i was receiving the "failed (98: Address already in use)" in the ssl port 443
                                 The root cause was the Security-Enhaced linux interfering the communication. For this we will have to set Selinux to "Permissive" state
                              
-4. Set the Selinux to "Permissive" state to solve the above mentioned problem    
+4. Set the Selinux to "Permissive" state to solve the above mentioned problem   
+
+
+## Supervisord
+
+This role will install and setup supervisord and will link it to the Nginx and uWSGI proccesses. For this it will execute the following steps:
+
+1. Upgrade pip (needed to install latest version of supervisord) and then install Supervisord
+2. Copy the supervisord conf file sitting in the /FILES folder of the role to the host. This conf file has been already modified to add the nginx and uWSGI processes
+3. Start supervisord.This will automatically start the Nginx server and the uWSGI bridge. From now we will be able to monitor the services through the web interface http://192.168.33.13:9001
+
+
+## Local_actions
+
+This is a very simple role. It will just add an entry in our local machine /etc/hosts  file for our new server. The server was automatically renamed to MSD_JUAN in the Vagrantfile configuration
