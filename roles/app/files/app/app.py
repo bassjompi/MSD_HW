@@ -13,7 +13,7 @@ def systeminfo():
     usage=str("CPU USAGE  {}%".format(psutil.cpu_percent())+"\n")
     tiempo= time.strftime('%H:%M:%S %Z on %b %d, %Y')
 
-    def get_ip_address(ifname):                                         ## function to obtain ip of a certain device
+    def get_ip_address(ifname):                                         ## function to obtain ip of a certain adapter
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         return socket.inet_ntoa(fcntl.ioctl(
             s.fileno(),
