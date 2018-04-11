@@ -50,7 +50,7 @@ This role will simply install the EPEL repository for Centos7 and then it will i
 This role has the final purpose of generating a self signed certificate in the host. For this the automation will:
 
 1. Install the required packages: openssl, pip (needed to install python packages) and PyOpenssl
-2. Create the directories were we will generate the certificate and key
+2. Create the directories where we will generate the certificate and key
 3. Generate a private key  in /etc/ssl/private/msd.pem
 4. Generate a certificate signing request using that key, and filling the data needed (email, country ...etc)
 5. Finally it will generate a self signed certificate using the key and the signing request. We can now use our certificate sitting in the folder /etc/ssl/certs/nginx-selfsigned.crt
