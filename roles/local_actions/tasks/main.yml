@@ -1,6 +1,17 @@
 ---
-
-- name: add line to hosts
+  
+- name: add line to hosts in unix systems
   lineinfile:
     path: /etc/hosts
     line: '192.168.33.13 MSD_JUAN'
+  when:  (ansible_os_family == 'Darwin') or
+         (ansible_os_family == 'RedHat') or
+         (ansible_os_family == 'Debian') or
+         (ansible_os_family == 'Suse')
+
+
+- name: add line to hosts in Windows systems
+  win_lineinfile:
+    path: C:\Windows\System32\drivers\etc
+    line: '192.168.33.13 MSD_JUAN'
+  when: ansible_os_family == 'Windows'
